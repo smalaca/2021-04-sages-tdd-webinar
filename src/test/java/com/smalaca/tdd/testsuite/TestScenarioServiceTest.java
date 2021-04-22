@@ -66,6 +66,26 @@ public class TestScenarioServiceTest {
         thenTestScenarioWasNotSaved();
     }
 
+    @Test
+    void shouldNotSaveValidTestScenarioWhenTestScenarioWithGivenNameExists() {
+        //given
+        givenExistingTestScenarioWithName(TEST_SCENARIO_NAME);
+        Author author = new Author();
+        TestScenario testScenario = new TestScenario(TEST_SCENARIO_NAME);
+        testScenario.add(new TestAssertion());
+        testScenario.add(new GivenPart());
+
+        //when
+        service.add(testScenario, author);
+
+        //then
+        thenTestScenarioWasNotSaved();
+    }
+
+    private void givenExistingTestScenarioWithName(String name) {
+        given(repository.existsWithName(name)).willReturn(true);
+    }
+
     private void givenNotExistingTestScenarioWithName(String name) {
         given(repository.existsWithName(name)).willReturn(false);
     }
