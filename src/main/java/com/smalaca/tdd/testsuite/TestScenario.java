@@ -20,4 +20,8 @@ public class TestScenario {
     boolean hasAssertions() {
         return assertion != null;
     }
+
+    boolean hasExecutablePart() {
+        return given != null;
+    }
 }
