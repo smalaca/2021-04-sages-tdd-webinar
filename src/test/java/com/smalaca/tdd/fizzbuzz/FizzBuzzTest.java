@@ -14,7 +14,7 @@ Wymagania:
 */
 
     @Test
-    void shouldReturnNumberAsString() {
+    void shouldReturn13AsString() {
         //given
 
         //when
@@ -22,5 +22,16 @@ Wymagania:
 
         //then
         assertThat(actual).isEqualTo("13");
+    }
+
+    @Test
+    void shouldReturnNumberAsString() {
+        //given
+
+        //when
+        String actual = new FizzBuzz().covert(42);
+
+        //then
+        assertThat(actual).isEqualTo("42");
     }
 }
