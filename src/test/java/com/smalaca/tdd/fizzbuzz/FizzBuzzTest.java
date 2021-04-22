@@ -29,9 +29,9 @@ Wymagania:
         //given
 
         //when
-        String actual = new FizzBuzz().covert(42);
+        String actual = new FizzBuzz().covert(17);
 
         //then
-        assertThat(actual).isEqualTo("42");
+        assertThat(actual).isEqualTo("17");
     }
 }
