@@ -2,9 +2,11 @@ package com.smalaca.tdd.testsuite;
 
 import org.junit.jupiter.api.Test;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.then;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.never;
 
 public class TestScenarioServiceTest {
     private static final String TEST_SCENARIO_NAME = "some great name of test scenario";
@@ -34,11 +36,30 @@ public class TestScenarioServiceTest {
         thenTestScenarioWasSaved(testScenario, author);
     }
 
+    @Test
+    void shouldNotSaveTestScenarioWithoutAssertion() {
+        //given
+        givenNotExistingTestScenarioWithName(TEST_SCENARIO_NAME);
+        Author author = new Author();
+        TestScenario testScenario = new TestScenario(TEST_SCENARIO_NAME);
+        testScenario.add(new GivenPart());
+
+        //when
+        service.add(testScenario, author);
+
+        //then
+        thenTestScenarioWasNotSaved();
+    }
+
     private void givenNotExistingTestScenarioWithName(String name) {
         given(repository.existsWithName(name)).willReturn(false);
     }
 
     private void thenTestScenarioWasSaved(TestScenario testScenario, Author author) {
         then(repository).should().save(testScenario, author);
+    }
+
+    private void thenTestScenarioWasNotSaved() {
+        then(repository).should(never()).save(any(), any());
     }
 }
