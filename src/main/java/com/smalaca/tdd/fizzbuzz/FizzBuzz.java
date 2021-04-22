@@ -2,6 +2,10 @@ package com.smalaca.tdd.fizzbuzz;
 
 public class FizzBuzz {
     String covert(int number) {
+        if (isDividableBy(number, 15)) {
+            return "FizzBuzz";
+        }
+
         if (isDividableBy(number, 3)) {
             return "Fizz";
         }
