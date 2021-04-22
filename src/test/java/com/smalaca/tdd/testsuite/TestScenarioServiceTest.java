@@ -14,6 +14,7 @@ Wymagania:
 3. TestScenario może zostać zapisany gdy nie istnieje TestScenario z taką samą nazwą
  */
     private final TestScenarioRepository repository = mock(TestScenarioRepository.class);
+    private final TestScenarioService service = new TestScenarioService(repository);
 
     @Test
     void shouldSaveTestScenario() {
@@ -25,7 +26,7 @@ Wymagania:
         testScenario.add(new GivenPart());
 
         //when
-        new TestScenarioService(repository).add(testScenario, author);
+        service.add(testScenario, author);
 
         //then
         thenTestScenarioWasSaved(testScenario, author);
