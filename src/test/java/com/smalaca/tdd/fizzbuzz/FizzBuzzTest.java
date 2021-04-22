@@ -35,4 +35,11 @@ Wymagania:
         //then
         assertThat(actual).isEqualTo("17");
     }
+
+    @Test
+    void shouldReturnFizzWhenNumberDividableByThree() {
+        String actual = fizzBuzz.covert(3);
+
+        assertThat(actual).isEqualTo("Fizz");
+    }
 }
