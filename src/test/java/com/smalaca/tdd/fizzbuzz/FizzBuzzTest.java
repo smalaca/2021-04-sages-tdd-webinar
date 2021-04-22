@@ -49,4 +49,11 @@ Wymagania:
 
         assertThat(actual).isEqualTo("Buzz");
     }
+
+    @Test
+    void shouldReturnFizzBuzzWhenNumberDividableByFiveAndThree() {
+        String actual = fizzBuzz.covert(15);
+
+        assertThat(actual).isEqualTo("FizzBuzz");
+    }
 }
