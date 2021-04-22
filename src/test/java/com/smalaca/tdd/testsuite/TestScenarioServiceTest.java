@@ -51,6 +51,21 @@ public class TestScenarioServiceTest {
         thenTestScenarioWasNotSaved();
     }
 
+    @Test
+    void shouldNotSaveTestScenarioWithoutExecutablePart() {
+        //given
+        givenNotExistingTestScenarioWithName(TEST_SCENARIO_NAME);
+        Author author = new Author();
+        TestScenario testScenario = new TestScenario(TEST_SCENARIO_NAME);
+        testScenario.add(new TestAssertion());
+
+        //when
+        service.add(testScenario, author);
+
+        //then
+        thenTestScenarioWasNotSaved();
+    }
+
     private void givenNotExistingTestScenarioWithName(String name) {
         given(repository.existsWithName(name)).willReturn(false);
     }
