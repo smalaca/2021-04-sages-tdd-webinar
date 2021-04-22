@@ -8,7 +8,7 @@ public class TestScenarioService {
     }
 
     void add(TestScenario testScenario, Author author) {
-        if (testScenario.isValid()) {
+        if (testScenario.isValid() && !repository.existsWithName(testScenario.name())) {
             repository.save(testScenario, author);
         }
     }
