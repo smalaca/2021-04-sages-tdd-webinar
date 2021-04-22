@@ -5,7 +5,8 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class FizzBuzzTest {
-/*
+    private final FizzBuzz fizzBuzz = new FizzBuzz();
+    /*
 Wymagania:
 1. Gdy jest przekazana liczba (int) zwracamy tą liczbę w postaci String'a.
 2. Gdy liczba jest podzielna przez 3 zwracamy Fizz.
@@ -18,7 +19,7 @@ Wymagania:
         //given
 
         //when
-        String actual = new FizzBuzz().covert(13);
+        String actual = fizzBuzz.covert(13);
 
         //then
         assertThat(actual).isEqualTo("13");
@@ -29,7 +30,7 @@ Wymagania:
         //given
 
         //when
-        String actual = new FizzBuzz().covert(17);
+        String actual = fizzBuzz.covert(17);
 
         //then
         assertThat(actual).isEqualTo("17");
