@@ -2,14 +2,18 @@ package com.smalaca.tdd.fizzbuzz;
 
 public class FizzBuzz {
     String covert(int number) {
-        if (number % 3 == 0) {
+        if (isDividableBy(number, 3)) {
             return "Fizz";
         }
 
-        if (number % 5 == 0) {
+        if (isDividableBy(number, 5)) {
             return "Buzz";
         }
 
         return String.valueOf(number);
+    }
+
+    private boolean isDividableBy(int number, int divisor) {
+        return number % divisor == 0;
     }
 }
